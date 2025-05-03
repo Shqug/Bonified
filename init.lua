@@ -117,7 +117,7 @@ core.register_craft {
 -- Strength is the chance (0-1) to instantly advance a growth stage
 -- For crops this is rerolled until failure or 5 times, whichever is lower
 -- For saplings this value is halved
-if core.settings: get_bool('bonified.enable_bone_meal', true) and core.get_modpath 'farming' then
+if core.settings: get_bool('bonified.enable_bone_meal', true) then
 	function bonified.apply_fertilizer (strength)
 		return function (itemstack, player, pointed)
 			if core.is_protected(player: get_player_name(), pointed.under) then

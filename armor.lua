@@ -7,14 +7,24 @@ if core.settings: get_bool('bonified.enable_bone_tools', true) then
 		description = S 'Bundle of Bones',
 		inventory_image = 'bonified_bone_bundle.png'
 	})
-
-	core.register_craft {
-		output = 'bonified:bone_bundle',
-		recipe = {
-			{'bonified:bone', 'farming:string', 'bonified:bone'},
-			{'bonified:bone', 'farming:string', 'bonified:bone'}
+	
+	if core.get_modpath 'farming' then
+		core.register_craft {
+			output = 'bonified:bone_bundle',
+			recipe = {
+				{'bonified:bone', 'farming:string', 'bonified:bone'},
+				{'bonified:bone', 'farming:string', 'bonified:bone'}
+			}
 		}
-	}
+	else
+		core.register_craft {
+			output = 'bonified:bone_bundle',
+			recipe = {
+				{'bonified:bone', 'group:grass', 'bonified:bone'},
+				{'bonified:bone', 'group:grass', 'bonified:bone'}
+			}
+		}
+	end
 	
 	-- Bone armor
 	armor: register_armor('bonified:armor_helmet_bone', {
