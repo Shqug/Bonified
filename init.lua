@@ -3,6 +3,11 @@ bonified = {modpath = core.get_modpath 'bonified'}
 local S = core.get_translator 'bonified'
 
 -- New mesh appearance for bones + rename to bone pile
+local nodebox = {
+	type = 'fixed',
+	fixed = {-0.5, -0.5, -0.5, 0.5, 1.5/16, 0.5}
+}
+
 core.override_item('bones:bones', {
 	description = S 'Pile of Bones',
 	drawtype = 'mesh',
@@ -13,10 +18,8 @@ core.override_item('bones:bones', {
 	paramtype2 = '4dir',
 	sunlight_propagates = true,
 	
-	collision_box = {
-		type = 'fixed',
-		fixed = {-0.5, -0.5, -0.5, 0.5, -4/16, 0.5}
-	}
+	collision_box = nodebox,
+	selection_box = nodebox
 })
 
 -- Bone item
