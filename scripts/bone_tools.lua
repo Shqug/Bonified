@@ -28,6 +28,11 @@ core.register_globalstep(function (dtime)
 					new_groupcaps[name] = {times = new_times, uses = group.uses, maxlevel = group.maxlevel}
 				end
 				
+				local new_damage_groups = {}
+				for group, rating in pairs(caps.damage_groups) do
+					new_damage_groups[group] = math.floor((rating * wear_diff_ratio) + 0.5) -- increase damage
+				end
+				
 				itemstack: get_meta(): set_tool_capabilities {
 					max_drop_level = caps.max_drop_level,
 					full_punch_interval = caps.full_punch_interval * wear_diff_ratio_inverse, -- reduce swing delay
