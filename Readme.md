@@ -35,6 +35,8 @@ Bone blocks and fossil blocks can both be made into bricks, which can be made in
 
 ## Licensing
 
+(C) Shqug 2025
+
 The source code and data files of Bonified are licensed under Apache 2.0. See LICENSE.txt.
 
 The media files of Bonified are licensed under CC BY-SA 4.0. See MEDIA_LICENSE.txt
