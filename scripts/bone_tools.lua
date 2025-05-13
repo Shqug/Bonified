@@ -160,3 +160,27 @@ core.register_craft {
 		{'', 'default:stick', ''}
 	}
 }
+
+-- The bone hoe isn't actually registered as a bone tool, since hoes don't have stats
+-- Instead, it's essentially just a replacement for the removed hoes (mese/bronze)
+if core.get_modpath 'farming' then
+	farming.register_hoe(':bonified:tool_hoe_bone', {
+		description = S 'Bone Hoe',
+		inventory_image = 'bonified_hoe_bone.png',
+		max_uses = 300,
+		groups = {hoe = 1},
+		material = 'bonified:bone_block'
+	})
+	
+	-- Bone wear colors aren't used, because wear has no special meaning for this tool
+	--[[core.override_item('bonified:tool_hoe_bone', {
+		wear_color = {
+			blend = 'linear',
+			color_stops = {
+				[0.0] = '#ff0044',
+				[0.5] = '#ff9539',
+				[1.0] = '#ffe5a4'
+			}
+		}
+	})]]
+end

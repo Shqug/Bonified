@@ -5,7 +5,7 @@ local S = core.get_translator 'bonified'
 -- Bones, bone block, changes to MTG bones
 dofile(bonified.modpath .. '/scripts/bones.lua')
 
--- Bonemeal & Fertilizer
+-- Bone meal & Fertilizer
 if core.settings: get_bool('bonified.enable_bone_meal', true) then
 	dofile(bonified.modpath .. '/scripts/bone_meal.lua')
 end
