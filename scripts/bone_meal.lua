@@ -5,8 +5,8 @@ local S = core.get_translator 'bonified'
 -- For saplings this value is halved
 function bonified.apply_fertilizer (strength)
 	return function (itemstack, player, pointed)
-		if core.is_protected(player: get_player_name(), pointed.under) then
-			core.record_protection_violation(player: get_player_name(), pointed.under)
+		if core.is_protected(pointed.under, player: get_player_name()) then
+			core.record_protection_violation(pointed.under, player: get_player_name())
 			return itemstack
 		end
 		
