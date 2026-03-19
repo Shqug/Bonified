@@ -1,5 +1,8 @@
 
-bonified = {modpath = core.get_modpath 'bonified'}
+bonified = {
+	modpath = core.get_modpath 'bonified',
+	VERSION = '010200'
+}
 local S = core.get_translator 'bonified'
 
 -- Bones, bone block, changes to MTG bones
