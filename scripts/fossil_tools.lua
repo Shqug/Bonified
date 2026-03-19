@@ -20,7 +20,7 @@ core.register_craft {
 	output = 'bonified:tool_pick_fossil',
 	recipe = {
 		{'bonified:fossil', 'bonified:fossil_block', 'bonified:fossil'},
-		{'', 'bonified:bone', ''},
+		{'', 'default:bronze_ingot', ''},
 		{'', 'bonified:bone', ''}
 	}
 }
@@ -45,7 +45,7 @@ core.register_craft {
 	output = 'bonified:tool_shovel_fossil',
 	recipe = {
 		{'', 'bonified:fossil_block', ''},
-		{'', 'bonified:bone', ''},
+		{'', 'default:bronze_ingot', ''},
 		{'', 'bonified:bone', ''}
 	}
 }
@@ -69,7 +69,7 @@ core.register_craft {
 	output = 'bonified:tool_axe_fossil',
 	recipe = {
 		{'bonified:fossil', 'bonified:fossil_block', ''},
-		{'bonified:fossil', 'bonified:bone', ''},
+		{'bonified:fossil', 'default:bronze_ingot', ''},
 		{'', 'bonified:bone', ''}
 	}
 }
@@ -94,6 +94,6 @@ core.register_craft {
 	recipe = {
 		{'', 'bonified:fossil', ''},
 		{'', 'bonified:fossil_block', ''},
-		{'', 'bonified:bone', ''}
+		{'', 'default:bronze_ingot', ''}
 	}
 }
