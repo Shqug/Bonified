@@ -19,14 +19,14 @@ function bonified.apply_fertilizer (strength)
 				if math.random() <= strength * 0.5 then
 					default.grow_sapling(pointed.under)
 					
-					for i = 1, math.random(6,12) do
+					for i = 1, math.random(10,20) do
 						core.add_particle {
-							pos = pointed.under + vector.new((math.random() - 0.5) * 2, (math.random() - 0.66) * 0.3, (math.random() - 0.5) * 2),
-							velocity = vector.new(0, 3, 0),
-							acceleration = vector.new(0, -5, 0),
-							expirationtime = 0.35,
+							pos = pointed.under + vector.new((math.random() - 0.5) * 1.5, (math.random() - 0.66) * 0.3, (math.random() - 0.5) * 1.5),
+							velocity = vector.new(0, 6, 0),
+							acceleration = vector.new(0, -4, 0),
+							expirationtime = 0.25,
 							glow = 5,
-							size = 1,
+							size = 2,
 							texture = 'bonified_fertilize_particle.png'
 						}
 					end
@@ -43,14 +43,14 @@ function bonified.apply_fertilizer (strength)
 				while math.random() <= strength and rolls < 6 do
 					farming.grow_plant(pointed.under)
 					
-					for i = 1, math.random(3,5) do
+					for i = 1, math.random(8,14) do
 						core.add_particle {
-							pos = pointed.under + vector.new(math.random() - 0.5, (math.random() - 0.66) * 0.3, math.random() - 0.5),
-							velocity = vector.new(0, 3, 0),
-							acceleration = vector.new(0, -5, 0),
-							expirationtime = 0.35,
+							pos = pointed.under + vector.new((math.random() - 0.5) * 0.75, (math.random() - 0.66) * 0.3, (math.random() - 0.5) * 0.75),
+							velocity = vector.new(0, 6, 0),
+							acceleration = vector.new(0, -4, 0),
+							expirationtime = 0.25,
 							glow = 5,
-							size = 1,
+							size = 2,
 							texture = 'bonified_fertilize_particle.png'
 						}
 					end
