@@ -79,6 +79,7 @@ core.register_node('bonified:fossil_block', {
 	description = S 'Fossil Block',
 	tiles = {'bonified_fossil_block.png'},
 	groups = {oddly_breakable_by_hand = 1, crumbly = 3},
+	is_ground_content = false,
 	sounds = default.node_sound_gravel_defaults()
 })
 

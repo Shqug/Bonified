@@ -98,6 +98,7 @@ core.register_node('bonified:bone_block', {
 	description = S 'Bone Block',
 	tiles = {'bonified_bone_block.png'},
 	groups = {oddly_breakable_by_hand = 1, crumbly = 3},
+	is_ground_content = false,
 	sounds = default.node_sound_gravel_defaults()
 })
 
