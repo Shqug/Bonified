@@ -16,6 +16,22 @@ core.register_craft {
 	}
 }
 
+core.register_node('bonified:bone_bricks_chiselled', {
+	description = S 'Chiselled Bone Bricks',
+	tiles = {'bonified_bone_bricks_chiselled.png'},
+	groups = {oddly_breakable_by_hand = 3, cracky = 3, bone = 1},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults()
+})
+
+core.register_craft {
+	output = 'bonified:bone_bricks_chiselled 4',
+	recipe = {
+		{'bonified:bone_bricks', 'bonified:bone_bricks'},
+		{'bonified:bone_bricks', 'bonified:bone_bricks'}
+	}
+}
+
 core.register_node('bonified:fossil_bricks', {
 	description = S 'Fossil Bricks',
 	tiles = {'bonified_fossil_bricks.png'},
@@ -29,6 +45,22 @@ core.register_craft {
 	recipe = {
 		{'bonified:fossil_block', 'bonified:fossil_block'},
 		{'bonified:fossil_block', 'bonified:fossil_block'}
+	}
+}
+
+core.register_node('bonified:fossil_bricks_chiselled', {
+	description = S 'Chiselled Fossil Bricks',
+	tiles = {'bonified_fossil_bricks_chiselled.png'},
+	groups = {oddly_breakable_by_hand = 3, cracky = 3, bone = 1},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults()
+})
+
+core.register_craft {
+	output = 'bonified:fossil_bricks_chiselled 4',
+	recipe = {
+		{'bonified:fossil_bricks', 'bonified:fossil_bricks'},
+		{'bonified:fossil_bricks', 'bonified:fossil_bricks'}
 	}
 }
 
