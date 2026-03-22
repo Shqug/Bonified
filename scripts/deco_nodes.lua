@@ -209,3 +209,62 @@ core.register_craft {
 	},
 	output = 'bonified:bone_fence_rail 16'
 }
+
+local torch_on_place = function (itemstack, player, pointed)
+	local node = core.get_node(pointed.under)
+	local def = core.registered_nodes[node.name]
+	if def and def.on_rightclick and not (player and player: is_player() and player: get_player_control().sneak) then
+		return def.on_rightclick(pointed.under, node, player, itemstack, pointed) or itemstack
+	end
+
+	local surface = core.dir_to_wallmounted(vector.subtract(pointed.under, pointed.above))
+	local new_stack = itemstack
+	if surface == 0 then
+		new_stack: set_name 'bonified:bone_torch_ceiling'
+	elseif surface == 1 then
+		new_stack: set_name 'bonified:bone_torch'
+	else
+		new_stack: set_name 'bonified:bone_torch_wall'
+	end
+
+	itemstack = core.item_place(new_stack, player, pointed, wdir)
+	itemstack: set_name 'bonified:bone_torch'
+
+	return itemstack
+end
+
+local bone_torch_def = table.copy(core.registered_nodes['default:torch'])
+bone_torch_def.description = S 'Bone Torch'
+bone_torch_def.inventory_image = 'bonified_bone_torch.png'
+bone_torch_def.wield_image = 'bonified_bone_torch.png'
+bone_torch_def.tiles = {{
+	name = 'bonified_bone_torch_animated.png',
+	animation = {type = 'vertical_frames', aspect_w = 16, aspect_h = 16, length = 2}
+}}
+bone_torch_def.drop = 'bonified:bone_torch'
+bone_torch_def.on_place = torch_on_place
+core.register_node('bonified:bone_torch', bone_torch_def)
+
+local bone_torch_wall_def = table.copy(core.registered_nodes['default:torch_wall'])
+bone_torch_wall_def.tiles = {{
+	name = 'bonified_bone_torch_animated.png',
+	animation = {type = 'vertical_frames', aspect_w = 16, aspect_h = 16, length = 2}
+}}
+bone_torch_wall_def.drop = 'bonified:bone_torch'
+core.register_node('bonified:bone_torch_wall', bone_torch_wall_def)
+
+local bone_torch_ceiling_def = table.copy(core.registered_nodes['default:torch_ceiling'])
+bone_torch_ceiling_def.tiles = {{
+	name = 'bonified_bone_torch_animated.png',
+	animation = {type = 'vertical_frames', aspect_w = 16, aspect_h = 16, length = 2}
+}}
+bone_torch_ceiling_def.drop = 'bonified:bone_torch'
+core.register_node('bonified:bone_torch_ceiling', bone_torch_ceiling_def)
+
+core.register_craft {
+	recipe = {
+		{'group:coal'},
+		{'bonified:bone'}
+	},
+	output = 'bonified:bone_torch 6'
+}
