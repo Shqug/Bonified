@@ -210,7 +210,7 @@ core.register_craft {
 	output = 'bonified:bone_fence_rail 16'
 }
 
-local torch_on_place = function (itemstack, player, pointed)
+local function torch_on_place (itemstack, player, pointed)
 	local node = core.get_node(pointed.under)
 	local def = core.registered_nodes[node.name]
 	if def and def.on_rightclick and not (player and player: is_player() and player: get_player_control().sneak) then
@@ -267,4 +267,77 @@ core.register_craft {
 		{'bonified:bone'}
 	},
 	output = 'bonified:bone_torch 6'
+}
+
+local function lantern_on_place (itemstack, player, pointed)
+	local node = core.get_node(pointed.under)
+	local def = core.registered_nodes[node.name]
+	if def and def.on_rightclick and not (player and player: is_player() and player: get_player_control().sneak) then
+		return def.on_rightclick(pointed.under, node, player, itemstack, pointed) or itemstack
+	end
+
+	local surface = core.dir_to_wallmounted(vector.subtract(pointed.under, pointed.above))
+	local new_stack = itemstack
+	if surface == 0 then
+		new_stack: set_name 'bonified:fossil_lantern_ceiling'
+	else
+		new_stack: set_name 'bonified:fossil_lantern'
+	end
+
+	itemstack = core.item_place(new_stack, player, pointed, wdir)
+	itemstack: set_name 'bonified:fossil_lantern'
+
+	return itemstack
+end
+
+core.register_node('bonified:fossil_lantern', {
+	description = S 'Ancient Lantern',
+	tiles = {'bonified_fossil_lantern_top.png', 'bonified_fossil_lantern_bottom.png', 'bonified_fossil_lantern_side.png'},
+	use_texture_alpha = 'clip',
+	paramtype = 'light',
+	sunlight_propagates = true,
+	groups = {choppy = 3, oddly_breakable_by_hand = 2},
+	light_source = 12,
+	on_place = lantern_on_place,
+	sounds = default.node_sound_stone_defaults(),
+	drawtype = 'nodebox',
+	node_box = {
+		type = 'fixed',
+		fixed = {
+			{-8/24, -0.5, -8/24, 8/24, -10/24, 8/24},
+			{-6/24, -10/24, -6/24, 6/24, 7/24, 6/24},
+			{-8/24, 3/24, -8/24, 8/24, 5/24, 8/24},
+			{-3/24, 7/24, -0.001, 3/24, 10/24, 0}
+		}
+	}
+})
+
+core.register_node('bonified:fossil_lantern_ceiling', {
+	tiles = {'bonified_fossil_lantern_top.png', 'bonified_fossil_lantern_bottom.png', '[combine:24x24:0,-2=bonified_fossil_lantern_side.png'},
+	use_texture_alpha = 'clip',
+	paramtype = 'light',
+	sunlight_propagates = true,
+	groups = {choppy = 3, oddly_breakable_by_hand = 2, not_in_creative_inventory = 1},
+	light_source = 12,
+	sounds = default.node_sound_stone_defaults(),
+	drawtype = 'nodebox',
+	node_box = {
+		type = 'fixed',
+		fixed = {
+			{-8/24, -10/24, -8/24, 8/24, -8/24, 8/24},
+			{-6/24, -8/24, -6/24, 6/24, 9/24, 6/24},
+			{-8/24, 5/24, -8/24, 8/24, 7/24, 8/24},
+			{-3/24, 9/24, -0.001, 3/24, 0.5, 0}
+		}
+	},
+	drop = 'bonified:fossil_lantern'
+})
+
+core.register_craft {
+	recipe = {
+		{'', 'bonified:fossil', ''},
+		{'default:bronze_ingot', 'bonified:bone_torch', 'default:bronze_ingot'},
+		{'', 'bonified:fossil', ''}
+	},
+	output = 'bonified:fossil_lantern 3'
 }

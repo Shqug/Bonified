@@ -33,7 +33,7 @@ Various items from Bonified can be found in loot chests in dungeons, including b
 
 Bone blocks and fossil blocks can both be made into bricks, which can be made into slabs, stairs, and chiselled versions. Fossil bricks can be made into walls, and there are bone fences and fence rails made from bones and bone blocks.
 
-One coal lump and one bone can be made into six bone torches.
+One coal lump and one bone can be made into six bone torches, which can be crafted into ancient lanterns using fossils and bronze.
 
 ## Licensing
 
