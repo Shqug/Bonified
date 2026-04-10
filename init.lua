@@ -38,3 +38,7 @@ end
 
 -- Decorative bone nodes
 dofile(bonified.modpath .. '/scripts/deco_nodes.lua')
+
+if core.get_modpath 'mobs_skeletons' then
+	dofile(bonified.modpath .. '/scripts/skeletons.lua')
+end
