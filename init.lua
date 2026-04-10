@@ -39,6 +39,12 @@ end
 -- Decorative bone nodes
 dofile(bonified.modpath .. '/scripts/deco_nodes.lua')
 
+-- Skeleton mobs support
 if core.get_modpath 'mobs_skeletons' then
 	dofile(bonified.modpath .. '/scripts/skeletons.lua')
+end
+
+-- X Bows support
+if core.get_modpath 'x_bows' then
+	dofile(bonified.modpath .. '/scripts/x_bows.lua')
 end
