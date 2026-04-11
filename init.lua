@@ -1,7 +1,7 @@
 
 bonified = {
 	modpath = core.get_modpath 'bonified',
-	VERSION = '010200'
+	VERSION = '010400'
 }
 local S = core.get_translator 'bonified'
 
