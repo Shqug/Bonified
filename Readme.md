@@ -35,6 +35,14 @@ Bone blocks and fossil blocks can both be made into bricks, which can be made in
 
 One coal lump and one bone can be made into six bone torches, which can be crafted into ancient lanterns using fossils and bronze.
 
+## Compatibility
+
+Bonified is compatible with `mobs_skeletons`, and if enabled, skeletons will drop bones.
+
+Support is also provided for `x_bows`, with a bone and fossil arrow. Bone arrows are crafted in batches of six, and have a 1/5 chance to break on impact. Fossil arrows are equivalent to mese, and are crafted with both bones and fossils in batches of 12.
+
+If both `mobs_skeletons` and `x_bows` are enabled, skeleton archers will also drop bone and/or fossil arrows rather than steel arrows.
+
 ## Licensing
 
 (C) Shqug 2026
