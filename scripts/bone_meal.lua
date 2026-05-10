@@ -189,11 +189,19 @@ local function try_spread_generic (itemstack, player, pointed, strength, spread_
 	return itemstack
 end
 
+local permafrost_groups = core.registered_nodes['default:permafrost'].groups
+permafrost_groups.permafrost_spreadable = 1
+core.override_item('default:permafrost', {groups = permafrost_groups})
+
+local permafrost_stones_groups = core.registered_nodes['default:permafrost_with_stones'].groups
+permafrost_stones_groups.permafrost_spreadable = 1
+core.override_item('default:permafrost_with_stones', {groups = permafrost_stones_groups})
+
 local generic_spreadables = {
-	{'flora,flower', 'group:soil', 1},
 	{'mushroom', 'group:soil', 1},
 	{'flowers:waterlily', 'default:water_source', 1, 'air', 0, 3},
 	{'flowers:waterlily_waving', 'default:water_source', 1, 'air', 0, 3},
+	{'flower', 'group:soil', 1},
 	{'default:fern_1', 'group:soil', 1},
 	{'default:fern_2', 'group:soil', 1},
 	{'default:fern_3', 'group:soil', 1},
@@ -212,7 +220,11 @@ local generic_spreadables = {
 	{'default:marram_grass_2', 'group:sand', 1},
 	{'default:marram_grass_3', 'group:sand', 1},
 	{'default:dry_shrub', 'group:sand', 1, 'air', 4, 4},
-	{'default:sand_with_kelp', 'default:sand', 0, 'default:water_source', 48, 96}
+	{'default:sand_with_kelp', 'default:sand', 0, 'default:water_source', 48, 96},
+	{'default:dirt_with_grass', 'default:dirt', 0},
+	{'default:dirt_with_dry_grass', 'default:dirt', 0},
+	{'default:dry_dirt_with_dry_grass', 'default:dry_dirt', 0},
+	{'default:permafrost_with_moss', 'group:permafrost_spreadable', 0},
 }
 
 -- Strength is the chance (0-1) to instantly advance a growth stage
@@ -253,7 +265,7 @@ function bonified.apply_fertilizer (guarantee, strength)
 				end
 			end
 			
-			for _, spreadable in pairs(generic_spreadables) do
+			for _, spreadable in ipairs(generic_spreadables) do
 				if name == spreadable[1] or core.get_item_group(name, spreadable[1]) ~= 0 then
 					return try_spread_generic(itemstack, player, pointed, strength, spreadable[2], spreadable[3], spreadable[4], spreadable[5], spreadable[6])
 				end
