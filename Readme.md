@@ -8,7 +8,7 @@ Also changes the appearance of the bones block to a pile of bones with a proper 
 ## Bones, Bone Meal, & Fertilizer
 Bones are a new item you can obtain from bone piles, randomly from various kinds of soil, and from a few other sources listed in later sections.
 
-If not disabled in the mod's settings, you can make bones into **Bone Meal**, which speeds up the growth of crops and saplings, and can be further made into fertilizer which has an even greater effect.
+If not disabled in the mod's settings, you can make bones into **Bone Meal**, which speeds up the growth of crops, saplings, cactus, and papyrus, causes numerous kinds of plants to spread, and can be further made into fertilizer which has an even greater effect.
 
 Bones can also be made back into bone piles, and into bone blocks, which are decorative and a crafting ingredient.
 

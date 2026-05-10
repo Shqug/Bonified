@@ -42,7 +42,13 @@ local function try_grow_sapling (itemstack, player, pointed, strength)
 	core.sound_play({name = 'bonified_bone_meal_apply'}, {to_player = player: get_player_name(), pitch = 1+(math.random()*0.25)})
 	
 	if math.random() <= strength * 0.5 then
-		core.after(0.2, function (pos) default.grow_sapling(pos) end, pointed.under)
+		local nodename = core.get_node(pointed.under).name
+		
+		if nodename: find '^ebiomes:' then
+			core.after(0.2, function (pos) core.registered_nodes[nodename].on_timer(pos) end, pointed.under)
+		else
+			core.after(0.2, function (pos) default.grow_sapling(pos) end, pointed.under)
+		end
 		
 		make_effect(pointed.under)
 		core.sound_play({name = 'bonified_bone_meal_grow'}, {to_player = player: get_player_name(), gain = 0.6, pitch = 0.5+(math.random()*0.25)})
