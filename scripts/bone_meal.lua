@@ -51,6 +51,21 @@ local function try_grow_sapling (itemstack, player, pointed, strength)
 	return itemstack
 end
 
+local function try_grow_large_cactus (itemstack, player, pointed, strength)
+	if not (creative or core.check_player_privs(player, 'creative')) then itemstack: take_item() end
+	
+	core.sound_play({name = 'bonified_bone_meal_apply'}, {to_player = player: get_player_name(), pitch = 1+(math.random()*0.25)})
+	
+	if math.random() <= strength * 0.5 then
+		core.after(0.2, function (pos) default.grow_large_cactus(pos) end, pointed.under)
+		
+		make_effect(pointed.under)
+		core.sound_play({name = 'bonified_bone_meal_grow'}, {to_player = player: get_player_name(), gain = 0.6, pitch = 0.5+(math.random()*0.25)})
+	end
+	
+	return itemstack
+end
+
 local function try_grow_crop (itemstack, player, pointed, strength, guarantee)
 	if not (creative or core.check_player_privs(player, 'creative')) then itemstack: take_item() end
 	
@@ -75,6 +90,120 @@ local function try_grow_crop (itemstack, player, pointed, strength, guarantee)
 	return itemstack
 end
 
+local function try_grow_cactus (itemstack, player, pointed, strength)
+	if not (creative or core.check_player_privs(player, 'creative')) then itemstack: take_item() end
+	
+	core.sound_play({name = 'bonified_bone_meal_apply'}, {to_player = player: get_player_name(), pitch = 1+(math.random()*0.25)})
+	
+	if math.random() <= strength * 0.5 then
+		core.after(0.2, function (pos, node) default.grow_cactus(pos, node) end, pointed.under, core.get_node(pointed.under))
+		
+		make_effect(pointed.under + vector.new(0, 1, 0))
+		core.sound_play({name = 'bonified_bone_meal_grow'}, {to_player = player: get_player_name(), gain = 0.6, pitch = 0.5+(math.random()*0.25)})
+	end
+	
+	return itemstack
+end
+
+local function try_grow_papyrus (itemstack, player, pointed, strength)
+	if not (creative or core.check_player_privs(player, 'creative')) then itemstack: take_item() end
+	
+	core.sound_play({name = 'bonified_bone_meal_apply'}, {to_player = player: get_player_name(), pitch = 1+(math.random()*0.25)})
+	
+	local rolls = 0
+	while math.random() <= strength * 0.75 and rolls < 6 do
+		core.after(0.2, function (pos, node) default.grow_papyrus(pos, node) end, pointed.under, core.get_node(pointed.under))
+		
+		make_effect(pointed.under + vector.new(0, 1, 0))
+		core.sound_play({name = 'bonified_bone_meal_grow'}, {to_player = player: get_player_name(), gain = 0.6, pitch = 0.5+(math.random()*0.25)})
+		
+		rolls = rolls + 1
+	end
+	
+	return itemstack
+end
+
+local function try_spread_generic (itemstack, player, pointed, strength, spread_to, place_offset, node_above, param2_min, param2_max)
+	local name = core.get_node(pointed.under).name
+	
+	local stage_max = 1
+	
+	if name: sub(-2, -1): match '_%d' then
+		stage_max = tonumber(name: sub (-1, -1))
+	end
+	
+	if not (creative or core.check_player_privs(player, 'creative')) then itemstack: take_item() end
+	
+	core.sound_play({name = 'bonified_bone_meal_apply'}, {to_player = player: get_player_name(), pitch = 1+(math.random()*0.25)})
+	
+	local rolls = 0
+	while math.random() <= strength * 0.75  and rolls < 6 do
+		
+		local poses
+		
+		if node_above then
+			local potential_poses = core.find_nodes_in_area(pointed.under - vector.new(2, 2, 2), pointed.under + vector.new(2, 0, 2), {spread_to})
+			poses = {}
+			
+			for _, v in ipairs(potential_poses) do
+				local nodename = core.get_node(v + vector.new(0, 1, 0)).name
+				if nodename == node_above then
+					table.insert(poses, v)
+				end
+			end
+		else
+			poses = core.find_nodes_in_area_under_air(pointed.under - vector.new(2, 2, 2), pointed.under + vector.new(2, 0, 2), {spread_to})
+		end
+		
+		if #poses == 0 then
+			return itemstack
+		end
+		
+		local new_pos = poses[math.random(1, #poses)] + vector.new(0, place_offset, 0)
+		
+		if core.is_protected(new_pos, player: get_player_name()) then return itemstack end
+		
+		if stage_max > 1 then
+			core.set_node(new_pos, {name = name: sub(1, -3) .. '_' .. math.random(1, stage_max), param2 = param2_min and math.random(param2_min, param2_max)})
+		else
+			core.set_node(new_pos, {name = name, param2 = param2_min and math.random(param2_min, param2_max)})
+		end
+		
+		make_effect(new_pos)
+		core.sound_play({name = 'bonified_bone_meal_grow'}, {to_player = player: get_player_name(), gain = 0.6, pitch = 0.5+(math.random()*0.25)})
+		
+		rolls = rolls + 1
+	end
+	
+	return itemstack
+end
+
+local generic_spreadables = {
+	{'flora,flower', 'group:soil', 1},
+	{'mushroom', 'group:soil', 1},
+	{'flowers:waterlily', 'default:water_source', 1, 'air', 0, 3},
+	{'flowers:waterlily_waving', 'default:water_source', 1, 'air', 0, 3},
+	{'default:fern_1', 'group:soil', 1},
+	{'default:fern_2', 'group:soil', 1},
+	{'default:fern_3', 'group:soil', 1},
+	{'default:grass_1', 'group:soil', 1},
+	{'default:grass_2', 'group:soil', 1},
+	{'default:grass_3', 'group:soil', 1},
+	{'default:grass_4', 'group:soil', 1},
+	{'default:grass_5', 'group:soil', 1},
+	{'default:dry_grass_1', 'group:soil', 1},
+	{'default:dry_grass_2', 'group:soil', 1},
+	{'default:dry_grass_3', 'group:soil', 1},
+	{'default:dry_grass_4', 'group:soil', 1},
+	{'default:dry_grass_5', 'group:soil', 1},
+	{'default:junglegrass', 'group:soil', 1},
+	{'default:marram_grass_1', 'group:sand', 1},
+	{'default:marram_grass_2', 'group:sand', 1},
+	{'default:marram_grass_3', 'group:sand', 1},
+	{'default:dry_shrub', 'group:sand', 1, 'air', 4, 4},
+	{'default:sand_with_kelp', 'default:sand', 0, 'default:water_source', 48, 96}
+}
+
 -- Strength is the chance (0-1) to instantly advance a growth stage
 -- For crops, after the initial guaranteed growth, this is rerolled until failure or 5-guaranteed times, whichever is lower
 -- For saplings this value is halved
@@ -92,9 +221,31 @@ function bonified.apply_fertilizer (guarantee, strength)
 				return try_grow_sapling(itemstack, player, pointed, strength)
 			end
 			
+			if name == 'default:large_cactus_seedling' then
+				return try_grow_large_cactus(itemstack, player, pointed, strength)
+			end
+			
 			if (core.get_item_group(name, 'plant') ~= 0 or core.get_item_group(name, 'seed') ~= 0)
 			and core.registered_nodes[name].next_plant then
 				return try_grow_crop(itemstack, player, pointed, strength, guarantee)
+			end
+			
+			if name == 'default:cactus' then
+				if core.get_node(pointed.under - vector.new(0, 1, 0)).name ~= 'default:cactus' then
+					return try_grow_cactus(itemstack, player, pointed, strength)
+				end
+			end
+			
+			if name == 'default:papyrus' then
+				if core.get_node(pointed.under - vector.new(0, 1, 0)).name ~= 'default:papyrus' then
+					return try_grow_papyrus(itemstack, player, pointed, strength)
+				end
+			end
+			
+			for _, spreadable in pairs(generic_spreadables) do
+				if name == spreadable[1] or core.get_item_group(name, spreadable[1]) ~= 0 then
+					return try_spread_generic(itemstack, player, pointed, strength, spreadable[2], spreadable[3], spreadable[4], spreadable[5], spreadable[6])
+				end
 			end
 		end
 	end
