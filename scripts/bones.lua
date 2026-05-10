@@ -25,7 +25,7 @@ core.override_item('bones:bones', {
 core.register_craftitem('bonified:bone', {
 	description = S 'Bone',
 	inventory_image = 'bonified_bone.png',
-	groups = {bone = 1}
+	groups = {bone = 1, stick = 1}
 })
 
 core.register_craft {
