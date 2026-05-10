@@ -64,7 +64,7 @@ if core.settings: get_bool('bonified.enable_bone_meal', true) then
 	core.register_craftitem('bonified:fossil_meal', {
 		description = S 'Fossil Meal',
 		inventory_image = 'bonified_fossil_meal.png',
-		on_use = bonified.apply_fertilizer(core.settings: get 'bonified.fossil_meal_strength' or 0.95)
+		on_use = bonified.apply_fertilizer(2, core.settings: get 'bonified.fossil_meal_strength' or 0.95)
 	})
 
 	core.register_craft {
