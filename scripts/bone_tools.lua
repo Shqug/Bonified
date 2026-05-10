@@ -82,7 +82,7 @@ bonified.register_bone_tool('bonified:tool_pick_bone', {
 core.register_craft {
 	output = 'bonified:tool_pick_bone',
 	recipe = {
-		{'bonified:bone_block', 'bonified:bone_block', 'bonified:bone_block'},
+		{'bonified:bone_bale', 'bonified:bone_bale', 'bonified:bone_bale'},
 		{'', 'default:stick', ''},
 		{'', 'default:stick', ''}
 	}
@@ -107,7 +107,7 @@ bonified.register_bone_tool('bonified:tool_shovel_bone', {
 core.register_craft {
 	output = 'bonified:tool_shovel_bone',
 	recipe = {
-		{'', 'bonified:bone_block', ''},
+		{'', 'bonified:bone_bale', ''},
 		{'', 'default:stick', ''},
 		{'', 'default:stick', ''}
 	}
@@ -131,8 +131,8 @@ bonified.register_bone_tool('bonified:tool_axe_bone', {
 core.register_craft {
 	output = 'bonified:tool_axe_bone',
 	recipe = {
-		{'bonified:bone_block', 'bonified:bone_block', ''},
-		{'bonified:bone_block', 'default:stick', ''},
+		{'bonified:bone_bale', 'bonified:bone_bale', ''},
+		{'bonified:bone_bale', 'default:stick', ''},
 		{'', 'default:stick', ''}
 	}
 }
@@ -155,8 +155,8 @@ bonified.register_bone_tool('bonified:tool_sword_bone', {
 core.register_craft {
 	output = 'bonified:tool_sword_bone',
 	recipe = {
-		{'', 'bonified:bone_block', ''},
-		{'', 'bonified:bone_block', ''},
+		{'', 'bonified:bone_bale', ''},
+		{'', 'bonified:bone_bale', ''},
 		{'', 'default:stick', ''}
 	}
 }
@@ -169,7 +169,7 @@ if core.get_modpath 'farming' then
 		inventory_image = 'bonified_hoe_bone.png',
 		max_uses = 300,
 		groups = {hoe = 1},
-		material = 'bonified:bone_block'
+		material = 'bonified:bone_bale'
 	})
 	
 	-- Bone wear colors aren't used, because wear has no special meaning for this tool

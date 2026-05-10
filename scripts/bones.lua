@@ -43,6 +43,7 @@ core.register_craft {
 }
 
 -- Dropping bones from soils
+-- Second entry is rarity; 1 in X chance to drop one bone, 1 in 1.75X to drop 3 bones
 local soils = {
 	{'default:dirt', 30},
 	{'default:dirt_with_grass', 30},
@@ -94,24 +95,49 @@ for _, v in ipairs(soils) do
 end
 
 -- Bone block
-core.register_node('bonified:bone_block', {
+core.register_node('bonified:bone_bale', {
 	description = S 'Bone Block',
-	tiles = {'bonified_bone_block.png'},
-	groups = {oddly_breakable_by_hand = 1, crumbly = 3},
+	tiles = {'bonified_bone_block_top.png', 'bonified_bone_block_top.png', 'bonified_bone_block_side.png'},
+	groups = {oddly_breakable_by_hand = 1, choppy = 3},
 	is_ground_content = false,
-	sounds = default.node_sound_gravel_defaults()
+	paramtype2 = 'facedir',
+	sounds = default.node_sound_gravel_defaults(),
+	on_place = core.rotate_node
 })
 
 core.register_craft {
 	type = 'shapeless',
 	output = 'bonified:bone 4',
-	recipe = {'bonified:bone_block'}
+	recipe = {'bonified:bone_bale'}
 }
 
 core.register_craft {
-	output = 'bonified:bone_block',
+	output = 'bonified:bone_bale',
 	recipe = {
 		{'bonified:bone', 'bonified:bone'},
 		{'bonified:bone', 'bonified:bone'}
 	}
+}
+
+core.register_alias('bonified:bone_block', 'bonified:bone_gravel')
+
+core.register_node('bonified:bone_gravel', {
+	description = S 'Bone Gravel',
+	tiles = {'bonified_bone_gravel.png'},
+	groups = {oddly_breakable_by_hand = 1, crumbly = 3, falling_node = 1},
+	is_ground_content = false,
+	sounds = default.node_sound_gravel_defaults()
+})
+
+core.register_craft {
+	output = 'bonified:bone_gravel 3',
+	recipe = {
+		{'bonified:bone_bale', 'bonified:bone_bale'}
+	}
+}
+
+core.register_craft {
+	type = 'shapeless',
+	output = 'bonified:bone 2',
+	recipe = {'bonified:bone_gravel'}
 }

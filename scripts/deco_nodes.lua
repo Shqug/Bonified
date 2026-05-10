@@ -11,8 +11,8 @@ core.register_node('bonified:bone_bricks', {
 core.register_craft {
 	output = 'bonified:bone_bricks 16',
 	recipe = {
-		{'bonified:bone_block', 'bonified:bone_block'},
-		{'bonified:bone_block', 'bonified:bone_block'}
+		{'bonified:bone_bale', 'bonified:bone_bale'},
+		{'bonified:bone_bale', 'bonified:bone_bale'}
 	}
 }
 
@@ -142,8 +142,8 @@ core.register_alias('bonified:bone_brick_wall', 'bonified:bone_fence')
 
 core.register_craft {
 	recipe = {
-		{'bonified:bone_block', 'bonified:bone', 'bonified:bone_block'},
-		{'bonified:bone_block', 'bonified:bone', 'bonified:bone_block'}
+		{'bonified:bone_bale', 'bonified:bone', 'bonified:bone_bale'},
+		{'bonified:bone_bale', 'bonified:bone', 'bonified:bone_bale'}
 	},
 	output = 'bonified:bone_fence 16'
 }
