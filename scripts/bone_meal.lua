@@ -76,6 +76,22 @@ core.register_craft {
 	recipe = {'bonified:bone'}
 }
 
+core.register_craft {
+	type = 'shapeless',
+	output = 'bonified:bone_meal 9',
+	recipe = {'default:coral_skeleton'}
+}
+
+core.register_craft {
+	type = 'shapeless',
+	output = 'default:coral_skeleton',
+	recipe = {
+		'bonified:bone_meal', 'bonified:bone_meal', 'bonified:bone_meal',
+		'bonified:bone_meal', 'bonified:bone_meal', 'bonified:bone_meal',
+		'bonified:bone_meal', 'bonified:bone_meal', 'bonified:bone_meal'
+	}
+}
+
 if core.get_modpath 'dye' then
 	core.register_craft {
 		type = 'shapeless',
