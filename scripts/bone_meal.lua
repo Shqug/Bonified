@@ -46,6 +46,11 @@ local function try_grow_sapling (itemstack, player, pointed, strength)
 		
 		if nodename: find '^ebiomes:' then
 			core.after(0.2, function (pos) core.registered_nodes[nodename].on_timer(pos) end, pointed.under)
+		elseif nodename == 'moretrees:rubber_tree_sapling' then
+			core.after(0.2, function (pos)
+				minetest.remove_node(pos)
+				minetest.spawn_tree(pos, technic.rubber_tree_model)
+			end, pointed.under)
 		else
 			core.after(0.2, function (pos) default.grow_sapling(pos) end, pointed.under)
 		end
