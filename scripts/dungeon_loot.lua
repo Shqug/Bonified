@@ -55,6 +55,12 @@ core.settings: get_bool('bonified.enable_bone_tools', true) then
 		{name = 'bonified:armor_boots_bone', chance = 0.1},
 		{name = 'bonified:armor_shield_bone', chance = 0.08}
 	}
+	
+	if core.get_modpath '3d_armor_gloves_redo' then
+		dungeon_loot.register {
+			{name = 'bonified:armor_gloves_bone', chance = 0.1}
+		}
+	end
 end
 
 -- Fossil armor
@@ -67,4 +73,10 @@ core.settings: get_bool('bonified.enable_fossil_tools', true) then
 		{name = 'bonified:armor_boots_fossil', chance = 0.075, y = {-32768, -300}},
 		{name = 'bonified:armor_shield_fossil', chance = 0.05, y = {-32768, -300}}
 	}
+	
+	if core.get_modpath '3d_armor_gloves_redo' then
+		dungeon_loot.register {
+			{name = 'bonified:armor_gloves_fossil', chance = 0.05}
+		}
+	end
 end

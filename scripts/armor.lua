@@ -100,7 +100,7 @@ if core.settings: get_bool('bonified.enable_bone_tools', true) then
 			inventory_image = 'bonified_shield_bone_inv.png',
 			groups = {armor_shield=1, armor_heal=5, armor_use=350},
 			armor_groups = {fleshy=8},
-			damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
+			damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
 			reciprocate_damage = true
 		})
 		
@@ -110,6 +110,25 @@ if core.settings: get_bool('bonified.enable_bone_tools', true) then
 				{'bonified:bone', 'bonified:bone', 'bonified:bone'},
 				{'bonified:bone', 'bonified:bone_bundle', 'bonified:bone'},
 				{'', 'bonified:bone_bundle', ''}
+			}
+		}
+	end
+	
+	-- Bone gauntlets
+	if core.get_modpath '3d_armor_gloves_redo' then
+		armor:register_armor('bonified:armor_gloves_bone', {
+			description = S 'Bone Knuckles',
+			inventory_image = 'bonified_gloves_bone_inv.png',
+			groups = {armor_hands=1, armor_heal=5, armor_use=350},
+			armor_groups = {fleshy=8},
+			damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
+		})
+		
+		core.register_craft {
+			output = 'bonified:armor_gloves_bone',
+			recipe = {
+				{'bonified:bone_bundle', 'farming:string', 'bonified:bone_bundle'},
+				{'bonified:bone', 'farming:string', 'bonified:bone'}
 			}
 		}
 	end
@@ -214,6 +233,25 @@ if core.settings: get_bool('bonified.enable_fossil_tools', true) then
 				{'bonified:fossil_plate', 'default:bronze_ingot', 'bonified:fossil_plate'},
 				{'bonified:fossil_plate', 'bonified:fossil_plate', 'bonified:fossil_plate'},
 				{'', 'default:bronze_ingot', ''}
+			}
+		}
+	end
+	
+	-- Fossil gauntlets
+	if core.get_modpath '3d_armor_gloves_redo' then
+		armor:register_armor('bonified:armor_gloves_fossil', {
+			description = S 'Ancient Gauntlets',
+			inventory_image = 'bonified_gloves_fossil_inv.png',
+			groups = {armor_hands=1, armor_heal=10, armor_use=400},
+			armor_groups = {fleshy=12},
+			damage_groups = {cracky=3, snappy=2, choppy=2, crumbly=1, level=2},
+		})
+		
+		core.register_craft {
+			output = 'bonified:armor_gloves_fossil',
+			recipe = {
+				{'bonified:fossil_plate', 'farming:string', 'bonified:fossil_plate'},
+				{'default:bronze_ingot', 'farming:string', 'default:bronze_ingot'}
 			}
 		}
 	end
