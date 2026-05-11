@@ -288,6 +288,12 @@ core.register_craft {
 
 core.register_craft {
 	type = 'shapeless',
+	output = 'bonified:bone_meal 6',
+	recipe = {'bonified:skull'}
+}
+
+core.register_craft {
+	type = 'shapeless',
 	output = 'bonified:bone_meal 9',
 	recipe = {'default:coral_skeleton'}
 }

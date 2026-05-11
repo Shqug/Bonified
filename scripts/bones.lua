@@ -21,26 +21,27 @@ core.override_item('bones:bones', {
 	}
 })
 
+core.register_craft {
+	type = 'shapeless',
+	output = 'bonified:bone 5',
+	recipe = {'bones:bones'},
+	replacements = {{'bones:bones', 'bonified:skull'}}
+}
+
+core.register_craft {
+	output = 'bones:bones',
+	recipe = {
+		{'bonified:bone', 'bonified:skull', 'bonified:bone'},
+		{'bonified:bone', 'bonified:bone', 'bonified:bone'}
+	}
+}
+
 -- Bone item
 core.register_craftitem('bonified:bone', {
 	description = S 'Bone',
 	inventory_image = 'bonified_bone.png',
 	groups = {bone = 1, stick = 1}
 })
-
-core.register_craft {
-	type = 'shapeless',
-	output = 'bonified:bone 6',
-	recipe = {'bones:bones'}
-}
-
-core.register_craft {
-	output = 'bones:bones',
-	recipe = {
-		{'bonified:bone', 'bonified:bone', 'bonified:bone'},
-		{'bonified:bone', 'bonified:bone', 'bonified:bone'}
-	}
-}
 
 -- Dropping bones from soils
 -- Second entry is rarity; 1 in X chance to drop one bone, 1 in 1.75X to drop 3 bones
@@ -93,6 +94,46 @@ for _, v in ipairs(soils) do
 	
 	core.override_item(v[1], {drop = new_drop})
 end
+
+-- Skull nodes
+local function rotate_skull (pos, placer, itemstack, pointed_thing)
+	if not (placer and placer: is_player()) then return end
+	
+	local angle = -placer: get_look_horizontal()*120/math.pi
+	if angle < 0 then angle = 240 - angle end
+	if angle > 239 then angle = angle - 240 end
+	local param2 = math.max(0, math.min(math.floor(angle), 239))
+	
+	local node = core.get_node(pos)
+	node.param2 = param2
+	core.swap_node(pos, node)
+end
+
+core.register_node('bonified:skull', {
+	description = S 'Skull',
+	drawtype = 'mesh',
+	mesh = 'bonified_skull.obj',
+	tiles = {'bonified_bone_pile.png'},
+	use_texture_alpha = 'clip',
+	paramtype = 'light',
+	paramtype2 = 'degrotate',
+	sunlight_propagates = true,
+	
+	collision_box = {
+		type = 'fixed',
+		fixed = {-6/24, -0.5, -6/24, 6/24, 0, 6/24}
+	},
+	selection_box = {
+		type = 'fixed',
+		fixed = {-6/24, -0.5, -6/24, 6/24, 0, 6/24}
+	},
+	
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_wood_defaults(),
+	
+	node_placement_prediction = 'air',
+	after_place_node = rotate_skull
+})
 
 -- Bone block
 core.register_node('bonified:bone_bale', {
