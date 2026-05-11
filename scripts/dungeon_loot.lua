@@ -3,7 +3,7 @@
 dungeon_loot.register {
 	{name = 'bonified:bone', chance = 0.4, count = {1, 3}},
 	{name = 'bonified:bone', chance = 0.1, count = {5, 9}},
-	{name = 'bonified:skull', chance = 0.1}},
+	{name = 'bonified:skull', chance = 0.1},
 	{name = 'bonified:skull', chance = 0.05, count = {2, 5}},
 	{name = 'bonified:bone', chance = 0.5, count = {1, 5}, types = {'ice'}},
 	{name = 'bonified:bone', chance = 0.2, count = {4, 12}, types = {'ice'}}

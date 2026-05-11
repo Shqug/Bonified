@@ -99,6 +99,16 @@ end
 local function rotate_skull (pos, placer, itemstack, pointed_thing)
 	if not (placer and placer: is_player()) then return end
 	
+	local ray = Raycast(placer: get_pos() + vector.new(0, placer: get_properties().eye_height, 0), pointed_thing.under, false, false)
+	for pointed in ray do
+		if pointed.under == pointed_thing.under then
+			if pointed.intersection_normal.y == 0 then
+				core.swap_node(pos, {name = 'bonified:skull_wall', param2 = core.dir_to_fourdir(placer: get_look_dir())})
+				return
+			end
+		end
+	end
+	
 	local angle = -placer: get_look_horizontal()*120/math.pi
 	if angle < 0 then angle = 240 - angle end
 	if angle > 239 then angle = angle - 240 end
@@ -133,6 +143,30 @@ core.register_node('bonified:skull', {
 	
 	node_placement_prediction = 'air',
 	after_place_node = rotate_skull
+})
+
+core.register_node('bonified:skull_wall', {
+	drawtype = 'mesh',
+	mesh = 'bonified_skull_wall.obj',
+	tiles = {'bonified_bone_pile.png'},
+	use_texture_alpha = 'clip',
+	paramtype = 'light',
+	paramtype2 = '4dir',
+	sunlight_propagates = true,
+	
+	collision_box = {
+		type = 'fixed',
+		fixed = {-6/24, -6/24, 0.5, 6/24, 6/24, 0}
+	},
+	selection_box = {
+		type = 'fixed',
+		fixed = {-6/24, -6/24, 0.5, 6/24, 6/24, 0}
+	},
+	
+	groups = {cracky = 3, oddly_breakable_by_hand = 3, not_in_creative_inventory},
+	sounds = default.node_sound_wood_defaults(),
+	
+	drop = 'bonified:skull'
 })
 
 -- Bone block
