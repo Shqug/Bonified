@@ -17,6 +17,8 @@ Bone tools are made from bone blocks, and are comparable to bronze tools in term
 
 Bone armor is simply normal armor similar in defense to bronze armor. The 3d_armor mod is required for bone armor to be available. If '3D Armor Gloves Redo is installed, gauntlets will also be available.
 
+Bone equipment can be recycled into bonemeal (unless this feature is disabled by the user) with the amount of bonemeal returned varyiong based on the remaining durability of the item.
+
 ## Fossils
 Ancient Fossils can be obtained from fossil ore, which spawns in stone and permafrost. Fossil ores also drop bones.
 
