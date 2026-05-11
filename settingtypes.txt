@@ -1,4 +1,6 @@
 
+[Bone Meal]
+
 # Set to false to completely disable the bone meal and fertilizer items.
 bonified.enable_bone_meal (Enable Bone Meal & Fertilizer) bool true
 
@@ -14,6 +16,8 @@ bonified.fertilizer_strength (Fertilizer Strength) float 0.65 0.01 1
 # This value is rerolled until failure or 5 times for crops, and is halved for saplings.
 bonified.fossil_meal_strength (Fossil Meal Strength) float 0.95 0.01 1
 
+[Equipment]
+
 # When set to false, bone & fossil armor will not be registered, even when the tools are enabled.
 bonified.enable_armor (Enable Armor) bool true
 
@@ -23,6 +27,15 @@ bonified.enable_bone_tools (Enable Bone Tools & Armor) bool true
 
 # Enable tools made of ancient fossil (and armor, if enabled).
 bonified.enable_fossil_tools (Enable Fossil Tools & Armor) bool true
+
+# Allow recycling bone tools and armor into bone meal based on their remaining durability.
+bonified.enable_bone_tool_recycling (Allow Recycling Bone Equipment) bool true
+
+# A multiplier for the amount of bone meal returned, applied after taking away the percentage of
+# lost durability from the theoretical maximum return amount.
+bonified.bone_tool_recycling_ratio (Bone Equipment Recycling Efficiency) float 0.85 0.01 1
+
+[Worldgen]
 
 # Add various bonified items to dungeon loot pools, depending on which features are enabled.
 bonified.enable_dungeon_loot (Enable Bonified Items in Dungeon Loot) bool true

@@ -31,6 +31,11 @@ if core.get_modpath '3d_armor' and core.settings: get_bool('bonified.enable_armo
 	dofile(bonified.modpath .. '/scripts/armor.lua')
 end
 
+-- Bone gear recycling
+if core.settings: get_bool('bonified.enable_bone_meal', true) and core.settings: get_bool('bonified.enable_bone_tools', true) and core.settings: get_bool('bonified.enable_bone_tool_recycling', true) then
+	dofile(bonified.modpath .. '/scripts/bone_tool_recycling.lua')
+end
+
 -- Dungeon loot
 if core.get_modpath 'dungeon_loot' and core.settings: get_bool('bonified.enable_dungeon_loot', true) then
 	dofile(bonified.modpath .. '/scripts/dungeon_loot.lua')

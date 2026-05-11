@@ -3,10 +3,10 @@ local S = core.get_translator 'bonified'
 -- The gimmick of bone tools is they have similar durability to steel and start out slightly worse,
 -- but as they wear down they become more effective.
 local last_bt_update = os.time()
--- This callback is to check the wear of each players' currently held bone tool (if present),
--- and set the capabilities appropriately.
+-- This callback checks the wear of each players' currently held bone tool (if present),
+-- and sets the capabilities appropriately.
 core.register_globalstep(function (dtime)
-	if os.time() - last_bt_update >= 1.5 then
+	if os.time() - last_bt_update > 1 then
 		for _, player in ipairs(core.get_connected_players()) do
 			local itemstack = player: get_wielded_item()
 			if core.get_item_group(itemstack: get_name(), 'bone_tool') ~= 0 then
