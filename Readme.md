@@ -45,6 +45,8 @@ Support is also provided for `x_bows`, with a bone and fossil arrow. Bone arrows
 
 If both `mobs_skeletons` and `x_bows` are enabled, skeleton archers will also drop bone and/or fossil arrows rather than steel arrows.
 
+If `moreblocks` is present, shape variants of bone and fossil bricks will be registered with its' circular saw rather than the `stairs` mod, resulting in a much wider array of decorative nodes.
+
 ## Licensing
 
 (C) Shqug 2026

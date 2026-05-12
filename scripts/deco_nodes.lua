@@ -64,11 +64,35 @@ core.register_craft {
 	}
 }
 
-if core.get_modpath 'stairs' then
+if core.get_modpath 'moreblocks' and stairsplus then
+	stairsplus: register_all('bonified', 'bone_bricks', 'bonified:bone_bricks', {
+		description = S 'Bone Brick',
+		tiles = {'bonified_bone_bricks.png'},
+		groups = {oddly_breakable_by_hand = 3, cracky = 3},
+		sounds = default.node_sound_stone_defaults()
+	})
+	
+	core.register_alias('stairs:stair_bone_bricks', 'bonified:stair_bone_bricks')
+	core.register_alias('stairs:stair_outer_bone_bricks', 'bonified:stair_bone_bricks_outer')
+	core.register_alias('stairs:stair_inner_bone_bricks', 'bonified:stair_bone_bricks_inner')
+	core.register_alias('stairs:slab_bone_bricks' , 'bonified:slab_bone_bricks')
+	
+	stairsplus: register_all('bonified', 'fossil_bricks', 'bonified:fossil_bricks', {
+		description = S 'Fossil Brick',
+		tiles = {'bonified_fossil_bricks.png'},
+		groups = {oddly_breakable_by_hand = 3},
+		sounds = default.node_sound_stone_defaults()
+	})
+	
+	core.register_alias('stairs:stair_fossil_bricks', 'bonified:stair_fossil_bricks')
+	core.register_alias('stairs:stair_outer_fossil_bricks', 'bonified:stair_fossil_bricks_outer')
+	core.register_alias('stairs:stair_inner_fossil_bricks', 'bonified:stair_fossil_bricks_inner')
+	core.register_alias('stairs:slab_fossil_bricks' , 'bonified:slab_fossil_bricks')
+elseif core.get_modpath 'stairs' then
 	stairs.register_stair_and_slab(
 		'bone_bricks',
 		'bonified:bone_bricks',
-		{oddly_breakable_by_hand = 3, cracky = 3, bone = 1},
+		{oddly_breakable_by_hand = 3, cracky = 3},
 		{'bonified_bone_bricks.png'},
 		S 'Bone Brick Stairs', S 'Bone Brick Slab',
 		default.node_sound_stone_defaults(), true,
@@ -78,7 +102,7 @@ if core.get_modpath 'stairs' then
 	stairs.register_stair_and_slab(
 		'fossil_bricks',
 		'bonified:fossil_bricks',
-		{cracky = 2, bone = 1},
+		{cracky = 2},
 		{'bonified_fossil_bricks.png'},
 		S 'Fossil Brick Stairs', S 'Fossil Brick Slab',
 		default.node_sound_stone_defaults(), true,
