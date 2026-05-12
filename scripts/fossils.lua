@@ -25,10 +25,10 @@ core.register_ore {
 	ore_type       = 'scatter',
 	ore            = 'bonified:stone_with_fossil',
 	wherein        = 'default:stone',
-	clust_scarcity = 15^3,
+	clust_scarcity = 16^3,
 	clust_num_ores = 4,
 	clust_size     = 3,
-	y_max          = -150,
+	y_max          = -100,
 	y_min          = -300
 }
 
@@ -51,12 +51,24 @@ core.register_node('bonified:permafrost_with_fossil', permafrost_fossil_def)
 core.register_ore {
 	ore_type       = 'scatter',
 	ore            = 'bonified:permafrost_with_fossil',
-	wherein        = {'default:permafrost', 'default:permafrost_with_stones', 'default:permafrost_with_stones'},
-	clust_scarcity = 17^3,
-	clust_num_ores = 7,
-	clust_size     = 3,
+	wherein        = {'default:permafrost', 'default:permafrost_with_stones', 'default:permafrost_with_moss'},
+	clust_scarcity = 20^3,
+	clust_num_ores = 9,
+	clust_size     = 4,
 	y_max          = 80,
 	y_min          = 0
+}
+
+core.register_ore {
+	ore_type       = 'scatter',
+	ore            = 'bonified:stone_with_fossil',
+	wherein        = {'default:stone'},
+	biomes = {'tundra_highland', 'tundra', 'tundra_beach', 'tundra_ocean', 'tundra_under'},
+	clust_scarcity = 20^3,
+	clust_num_ores = 9,
+	clust_size     = 4,
+	y_max          = 80,
+	y_min          = -100
 }
 
 -- Fossil meal
