@@ -1,8 +1,8 @@
 
 # Bonified
-Adds some features related to the bones you get from dead players in MTG.
+Some new features related to the bones you get from dead players in MTG.
 
-Also changes the appearance of the bones block to a pile of bones with a proper 3D model.
+Also changes the appearance of the 'bones' block to a pile of bones with a proper 3D model.
 
 
 ## Bones, Bone Meal, & Fertilizer
@@ -17,19 +17,19 @@ Bone tools are made from bone blocks, and are comparable to bronze tools in term
 
 Bone armor is simply normal armor similar in defense to bronze armor. The 3d_armor mod is required for bone armor to be available. If '3D Armor Gloves Redo' is installed, gauntlets will also be available.
 
-Bone equipment can be recycled into bonemeal (unless this feature is disabled by the user) with the amount of bonemeal returned varying based on the remaining durability of the item.
+Bone equipment can be recycled into bone meal (unless this feature is disabled by the user) with the amount of bone meal returned varying based on the remaining durability of the item.
 
 ## Fossils
 Ancient Fossils can be obtained from fossil ore, which spawns in stone and permafrost. Fossil ores also drop bones.
 
 Fossil tools are crafted with ancient fossils and use bones instead of sticks, and are equivalent to mese tools but with more durability.
-Fossil armor sits between steel and diamond, and is made with Ancient Fossils and bronze ingots.
+Fossil armor sits between steel and diamond (i.e. fills the gap where mese armor would go), and is made with Ancient Fossils and bronze ingots.
 
 Ancient Fossils can also be made into fossil meal, which is similar to bone meal and fertilizer and has the highest effect of the three.
 
 ## Dungeon Loot
 
-Various items from Bonified can be found in loot chests in dungeons, including bones, bonemeal, fossils, and tools and armor.
+Various items from Bonified can be found in loot chests in dungeons, including bones, bone meal, fossils, and tools and armor. Icy dungeons have a higher chance of generating certain items.
 
 ## Decorative Nodes
 
@@ -42,7 +42,6 @@ One coal lump and one bone can be made into six bone torches, which can be craft
 Bonified is compatible with `mobs_skeletons`, and if enabled, skeletons will drop bones.
 
 Support is also provided for `x_bows`, with a bone and fossil arrow. Bone arrows are crafted in batches of six, and have a 1/5 chance to break on impact. Fossil arrows are equivalent to mese, and are crafted with both bones and fossils in batches of 12.
-
 If both `mobs_skeletons` and `x_bows` are enabled, skeleton archers will also drop bone and/or fossil arrows rather than steel arrows.
 
 If `moreblocks` is present, shape variants of bone and fossil bricks will be registered with its' circular saw rather than the `stairs` mod, resulting in a much wider array of decorative nodes.
