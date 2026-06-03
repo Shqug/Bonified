@@ -96,6 +96,18 @@ for _, v in ipairs(soils) do
 end
 
 -- Skull nodes
+-- Used to snap the skull to angles 1/8th of 240
+local multiples_15_lookup = {
+	0,
+	30,
+	60,
+	90,
+	120,
+	150,
+	180,
+	210
+}
+
 local function rotate_skull (pos, placer, itemstack, pointed_thing)
 	if not (placer and placer: is_player()) then return end
 	
@@ -112,10 +124,20 @@ local function rotate_skull (pos, placer, itemstack, pointed_thing)
 	local angle = -placer: get_look_horizontal()*120/math.pi
 	if angle < 0 then angle = 240 - angle end
 	if angle > 239 then angle = angle - 240 end
-	local param2 = math.max(0, math.min(math.floor(angle), 239))
+	local angle = math.max(0, math.min(math.floor(angle), 239))
+	
+	local smallest_diff = 240
+	local nearest = 0
+	for _, snap_angle in ipairs(multiples_15_lookup) do
+		local diff = math.abs(angle - snap_angle)
+		if diff < smallest_diff then
+			nearest = snap_angle
+			smallest_diff = diff
+		end
+	end
 	
 	local node = core.get_node(pos)
-	node.param2 = param2
+	node.param2 = nearest
 	core.swap_node(pos, node)
 end
 
