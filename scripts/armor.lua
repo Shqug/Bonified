@@ -153,7 +153,7 @@ if core.settings: get_bool('bonified.enable_fossil_tools', true) then
 	armor: register_armor('bonified:armor_helmet_fossil', {
 		description = S 'Ancient Helm',
 		inventory_image = 'bonified_helmet_fossil_inv.png',
-		groups = {armor_head=1, armor_heal=10, armor_use=400},
+		groups = {armor_head=1, armor_fire=1, armor_heal=10, armor_use=400},
 		armor_groups = {fleshy=12},
 		damage_groups = {cracky=2, snappy=1, choppy=2, level=3},
 	})
@@ -169,7 +169,7 @@ if core.settings: get_bool('bonified.enable_fossil_tools', true) then
 	armor: register_armor('bonified:armor_chestplate_fossil', {
 		description = S 'Ancient Cuirass',
 		inventory_image = 'bonified_chestplate_fossil_inv.png',
-		groups = {armor_torso=1, armor_heal=10, armor_use=400},
+		groups = {armor_torso=1, armor_fire=1, armor_heal=10, armor_use=400},
 		armor_groups = {fleshy=16},
 		damage_groups = {cracky=2, snappy=1, choppy=2, level=3},
 	})
@@ -186,7 +186,7 @@ if core.settings: get_bool('bonified.enable_fossil_tools', true) then
 	armor: register_armor('bonified:armor_leggings_fossil', {
 		description = S 'Ancient Cuisses',
 		inventory_image = 'bonified_leggings_fossil_inv.png',
-		groups = {armor_legs=1, armor_heal=10, armor_use=400},
+		groups = {armor_legs=1, armor_fire=1, armor_heal=10, armor_use=400},
 		armor_groups = {fleshy=16},
 		damage_groups = {cracky=2, snappy=1, choppy=2, level=3},
 	})
@@ -203,7 +203,7 @@ if core.settings: get_bool('bonified.enable_fossil_tools', true) then
 	armor: register_armor('bonified:armor_boots_fossil', {
 		description = S 'Ancient Greaves',
 		inventory_image = 'bonified_boots_fossil_inv.png',
-		groups = {armor_feet=1, armor_heal=10, armor_use=400},
+		groups = {armor_feet=1, armor_fire=1, armor_heal=10, armor_use=400},
 		armor_groups = {fleshy=12},
 		damage_groups = {cracky=2, snappy=1, choppy=2, level=3},
 	})
