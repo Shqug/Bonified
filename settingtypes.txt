@@ -28,6 +28,9 @@ bonified.enable_bone_tools (Enable Bone Tools & Armor) bool true
 # Enable tools made of ancient fossil (and armor, if enabled).
 bonified.enable_fossil_tools (Enable Fossil Tools & Armor) bool true
 
+# If fossil tools and X Bows are enabled, add a charged version of the ancient arrow that explodes.
+bonified.enable_charged_arrow (Enable Charged Ancient Arrow) bool true
+
 # Allow recycling bone tools and armor into bone meal based on their remaining durability.
 bonified.enable_bone_tool_recycling (Allow Recycling Bone Equipment) bool true
 

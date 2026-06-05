@@ -67,4 +67,7 @@ Bone Torch=
 Ancient Lantern=
 
 Bone Arrow=
-Fossil Arrow=
+Ancient Arrow=
+Charged Ancient Arrow=
+Creates a small explosion on impact=
+Does not damage nodes=
